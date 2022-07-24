@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnInit: Button
     lateinit var btnInsert: Button
     lateinit var btnSelect: Button
+    lateinit var btnDelete: Button
+    lateinit var btnModify: Button
     lateinit var sqlDB: SQLiteDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,15 +35,21 @@ class MainActivity : AppCompatActivity() {
         btnInit = findViewById<Button>(R.id.btnInit)
         btnInsert = findViewById<Button>(R.id.btnInsert)
         btnSelect = findViewById<Button>(R.id.btnSelect)
+        btnDelete = findViewById<Button>(R.id.btnDelete)
+        btnModify = findViewById<Button>(R.id.btnModify)
 
         myHelper = myDBHelper(this)
 
+        // 초기화
         btnInit.setOnClickListener{
             sqlDB = myHelper.writableDatabase
             myHelper.onUpgrade(sqlDB, 1, 2)
             sqlDB.close()
+
+            btnSelect.callOnClick()
         }
 
+        // 입력
         btnInsert.setOnClickListener{
             sqlDB = myHelper.writableDatabase
             sqlDB.execSQL("INSERT INTO groupTBL VALUES ( '"
@@ -50,8 +58,10 @@ class MainActivity : AppCompatActivity() {
             sqlDB.close()
             Toast.makeText(applicationContext, "입력됨", Toast.LENGTH_SHORT).show()
 
+            btnSelect.callOnClick()
         }
 
+        // 조회
         btnSelect.setOnClickListener {
             sqlDB = myHelper.readableDatabase
             var cursor: Cursor
@@ -67,7 +77,18 @@ class MainActivity : AppCompatActivity() {
             cursor.close()
             sqlDB.close()
         }
+
+        // 삭제
+        btnDelete.setOnClickListener {
+
+        }
+
+        // 수정
+        btnModify.setOnClickListener {
+
+        }
     }
+
 
     inner class myDBHelper(context: Context) : SQLiteOpenHelper (context, "groupDB", null, 1) {
         override fun onCreate(db: SQLiteDatabase?) {

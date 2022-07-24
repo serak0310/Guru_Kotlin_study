@@ -15,11 +15,13 @@
             android:layout_height="wrap_content"
             android:text="이름 : "
             android:textSize="20dp" />
+
         <EditText
             android:id="@+id/edtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,12 +33,13 @@
             android:layout_height="wrap_content"
             android:text="인원 : "
             android:textSize="20dp" />
+
         <EditText
             android:id="@+id/edtNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
-        </EditText>
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"></EditText>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,16 +50,33 @@
             android:id="@+id/btnInit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="초기화" />
         <Button
             android:id="@+id/btnInsert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="입력" />
+        <Button
+            android:id="@+id/btnModify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="수정" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="삭제" />
+
         <Button
             android:id="@+id/btnSelect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="조회" />
     </LinearLayout>
     <LinearLayout
@@ -64,19 +84,23 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:orientation="horizontal" >
+
         <EditText
             android:id="@+id/edtNameResult"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#DDDDFC"
-            android:padding="20dp" />
+            android:padding="20dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
         <EditText
             android:id="@+id/edtNumberResult"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#DDDDFC"
-            android:padding="20dp" />
+            android:padding="20dp"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 </LinearLayout>
