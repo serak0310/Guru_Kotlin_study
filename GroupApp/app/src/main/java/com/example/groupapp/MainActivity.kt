@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.FileObserver.DELETE
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -80,12 +81,20 @@ class MainActivity : AppCompatActivity() {
 
         // 삭제
         btnDelete.setOnClickListener {
+            sqlDB = myHelper.writableDatabase
+            sqlDB.execSQL("DELETE FROM groupTBL WHERE gName = '"+edtName.text.toString()+"';" )
+            sqlDB.close()
 
+            btnSelect.callOnClick()
         }
 
         // 수정
         btnModify.setOnClickListener {
+            sqlDB = myHelper.writableDatabase
+            sqlDB.execSQL("UPDATE groupTBL SET gNumber = "+edtNumber.text.toString()+" WHERE gName = '"+edtName.text.toString()+"';" )
+            sqlDB.close()
 
+            btnSelect.callOnClick()
         }
     }
 
