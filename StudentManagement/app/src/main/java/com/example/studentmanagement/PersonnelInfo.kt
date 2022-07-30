@@ -42,7 +42,7 @@ class PersonnelInfo : AppCompatActivity() {
         sqlitedb = dbManager.writableDatabase
 
         var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT * FROM personnel WHERE name = ${str_name};", null)
+        cursor = sqlitedb.rawQuery("SELECT * FROM personnel WHERE name = '"+str_name+"';", null)
 
         if(cursor.moveToNext()){
             str_gender = cursor.getString(cursor.getColumnIndex("gender")).toString()
@@ -86,7 +86,7 @@ class PersonnelInfo : AppCompatActivity() {
             R.id.action_remove -> {
                 dbManager = DBManager(this, "personnelDB", null, 1)
                 sqlitedb = dbManager.writableDatabase
-                sqlitedb.execSQL("DELETE FROM personnel WHERE name=${str_name};")
+                sqlitedb.execSQL("DELETE FROM personnel WHERE name= '"+str_name+"';")
                 sqlitedb.close()
                 dbManager.close()
 
