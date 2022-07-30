@@ -83,7 +83,7 @@ class PersonnelInfo : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
-            R.id.action_list -> {
+            R.id.action_remove -> {
                 dbManager = DBManager(this, "personnelDB", null, 1)
                 sqlitedb = dbManager.writableDatabase
                 sqlitedb.execSQL("DELETE FROM personnel WHERE name=${str_name};")
