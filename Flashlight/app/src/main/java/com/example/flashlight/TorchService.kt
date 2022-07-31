@@ -10,14 +10,28 @@ class TorchService : Service() {
         Torch(this)
     }
 
+    private var isRunning = false
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
+        // 앱
         when(intent?.action){
             "on" -> {
                 torch.flashOn()
             }
             "off" -> {
                 torch.flashOff()
+            }
+
+            // 위젯
+            else -> {
+                isRunning = !isRunning
+                if (isRunning){
+                    torch.flashOn()
+                }else{
+                    torch.flashOff()
+                }
+
             }
         }
         return super.onStartCommand(intent, flags, startId)
