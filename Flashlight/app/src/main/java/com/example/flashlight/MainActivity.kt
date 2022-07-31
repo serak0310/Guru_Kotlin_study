@@ -12,5 +12,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         flashSwitch = findViewById(R.id.FlashSwitch)
+        val torch = Torch(this)
+
+        flashSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                torch.flashOn()
+            }else{
+                torch.flashOff()
+            }
+        }
     }
 }
